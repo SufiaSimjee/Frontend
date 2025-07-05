@@ -11,10 +11,9 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 
 import App from "./App.jsx";
 import NotFoundScreen from "./screens/NotFoundScreen.jsx";
-import Dashboard from "./screens/Dashboard.jsx";
-import AddCategory from "./screens/AddCategory.jsx";
-import ViewCategory from "./screens/ViewCategory.jsx";
 
+import Dashboard from "./screens/Dashboard.jsx";
+import ViewCategory from "./screens/ViewCategory.jsx";
 
 import { lightTheme, darkTheme, customTheme } from "./themes.js";
 
@@ -59,8 +58,6 @@ export const Main = () => {
         >
           <Route path="*" element={<NotFoundScreen />} />
           <Route index element={<Dashboard />} />
-
-          <Route path="/add/category" element={<AddCategory />} />
           <Route path="/category" element={<ViewCategory />} />
         </Route>
       )
