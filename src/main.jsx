@@ -11,8 +11,10 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 
 import App from "./App.jsx";
 import NotFoundScreen from "./screens/NotFoundScreen.jsx";
+import Dashboard from "./screens/Dashboard.jsx";
 import AddCategory from "./screens/AddCategory.jsx";
-import CaategoryScreen from "./screens/CategoryScreen.jsx";
+import ViewCategory from "./screens/ViewCategory.jsx";
+
 
 import { lightTheme, darkTheme, customTheme } from "./themes.js";
 
@@ -56,14 +58,16 @@ export const Main = () => {
           element={<App toggleColorMode={toggleTheme} themeMode={mode} />}
         >
           <Route path="*" element={<NotFoundScreen />} />
+          <Route index element={<Dashboard />} />
+
           <Route path="/add/category" element={<AddCategory />} />
-          <Route path="/category" element={<CaategoryScreen />} />
+          <Route path="/category" element={<ViewCategory />} />
         </Route>
       )
     ), [toggleTheme, mode]
   );
 
-  // 6. Return JSX
+  //  Return JSX
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

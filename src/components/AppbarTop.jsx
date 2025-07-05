@@ -1,10 +1,21 @@
-import React from "react";
-import { AppBar, Toolbar, IconButton, Typography } from "@mui/material";
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  MenuItem,
+  Tooltip,
+  Box,
+} from "@mui/material";
 import {
   Brightness4 as Brightness4Icon,
   Brightness7 as Brightness7Icon,
   Menu as MenuIcon,
+  AccountCircle as AccountCircleIcon,
 } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 export default function AppBarTop({
   onMobileMenuClick,
@@ -13,10 +24,27 @@ export default function AppBarTop({
   themeMode,
   toggleColorMode,
 }) {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const navigate = useNavigate();
+
+  const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
+  const handleMenuClose = () => setAnchorEl(null);
+
+  const handleProfileClick = () => {
+    handleMenuClose();
+    navigate("/profile");
+  };
+
+  const handleLogout = () => {
+    handleMenuClose();
+    console.log("User logged out");
+  };
+
   return (
     <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar>
-        {/* Mobile toggle */}
+        {/* Mobile menu toggle */}
         <IconButton
           color="inherit"
           edge="start"
@@ -27,7 +55,7 @@ export default function AppBarTop({
           <MenuIcon />
         </IconButton>
 
-        {/* Desktop toggle */}
+        {/* Desktop sidebar toggle */}
         <IconButton
           color="inherit"
           edge="start"
@@ -42,10 +70,30 @@ export default function AppBarTop({
           Zaw Min Mobile
         </Typography>
 
-        {/* Theme toggle */}
+        {/* Theme mode toggle */}
         <IconButton color="inherit" onClick={toggleColorMode} aria-label="toggle theme">
           {themeMode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
         </IconButton>
+
+        {/* Profile menu */}
+        <Box sx={{ ml: 2 }}>
+          <Tooltip title="Account">
+            <IconButton onClick={handleMenuOpen} color="inherit" size="large">
+              <AccountCircleIcon />
+            </IconButton>
+          </Tooltip>
+
+          <Menu
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleMenuClose}
+            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            transformOrigin={{ vertical: "top", horizontal: "right" }}
+          >
+            <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+          </Menu>
+        </Box>
       </Toolbar>
     </AppBar>
   );

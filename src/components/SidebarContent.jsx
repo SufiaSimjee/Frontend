@@ -30,7 +30,7 @@ export default function SidebarContent() {
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
-          <ListItemText primary="Home" />
+          <ListItemText primary="Dashboard" />
         </ListItemButton>
 
         {/* Category */}
