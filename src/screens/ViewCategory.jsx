@@ -60,7 +60,6 @@ const ViewCategory = () => {
               value={id}
               onChange={(e) => setId(e.target.value)}
               fullWidth
-              margin="normal"
               autoFocus
             />
             <TextField

@@ -12,6 +12,7 @@ import {
   Dashboard as DashboardIcon,
   Category as CategoryIcon
 } from "@mui/icons-material";
+
 import { Link, useLocation } from "react-router-dom";
 
 export default function SidebarContent() {
