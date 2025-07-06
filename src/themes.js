@@ -1,21 +1,5 @@
 import { createTheme } from '@mui/material/styles';
 
-// Light Theme
-export const lightTheme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#1976d2',
-    },
-    secondary: {
-      main: '#f50057',
-    },
-  },
-  typography: {
-    fontFamily: 'Arial',
-  },
-});
-
 // Dark Theme
 export const darkTheme = createTheme({
   palette: {
@@ -42,12 +26,8 @@ export const customTheme = createTheme({
     secondary: {
       main: '#ff9800',
     },
-    background: {
-      default: '#f1f8e9',
-      paper: '#ffffff',
-    },
   },
   typography: {
-    fontFamily: 'Comic Sans MS',
+    fontFamily: 'Arial',
   },
 });

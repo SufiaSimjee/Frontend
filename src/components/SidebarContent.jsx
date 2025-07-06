@@ -8,11 +8,7 @@ import {
   Toolbar,
   Collapse,
 } from "@mui/material";
-import {
-  Dashboard as DashboardIcon,
-  Category as CategoryIcon
-} from "@mui/icons-material";
-
+import {SpaceDashboard,Apps,Storefront,} from "@mui/icons-material"; 
 import { Link, useLocation } from "react-router-dom";
 
 export default function SidebarContent() {
@@ -29,19 +25,33 @@ export default function SidebarContent() {
       <List>
         <ListItemButton component={Link} to="/" selected={isActive("/")}>
           <ListItemIcon>
-            <DashboardIcon />
+            <SpaceDashboard />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItemButton>
 
         {/* Category */}
-       
-        {/* Category */}
-        <ListItemButton component={Link} to="/category" selected={isActive("/category")}>
+        <ListItemButton
+          component={Link}
+          to="/category"
+          selected={isActive("/category")}
+        >
           <ListItemIcon>
-            <CategoryIcon />
+            <Apps />
           </ListItemIcon>
           <ListItemText primary="Category" />
+        </ListItemButton>
+
+        {/* Brand */}
+        <ListItemButton
+          component={Link}
+          to="/brand"
+          selected={isActive("/brand")}
+        >
+          <ListItemIcon>
+            <Storefront />
+          </ListItemIcon>
+          <ListItemText primary="Brand" />
         </ListItemButton>
 
       </List>
