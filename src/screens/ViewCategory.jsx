@@ -1,16 +1,10 @@
 import { useState } from "react";
 import {
-  Typography,
-  Fab,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  TextField,
-  Box
+        Typography,Dialog,DialogTitle,
+        DialogContent,DialogActions,Button,
+         TextField,Box
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import AddFab from "../components/AddFab";
 
 const ViewCategory = () => {
   const [id, setId] = useState("");
@@ -42,14 +36,7 @@ const ViewCategory = () => {
         Category
       </Typography>
 
-      <Fab
-        color="primary"
-        aria-label="add"
-        sx={{ position: "fixed", bottom: 20, right: 28 }}
-        onClick={handleOpenDialog}
-      >
-        <AddIcon />
-      </Fab>
+      <AddFab onClick={handleOpenDialog} />
 
       <Dialog open={open} onClose={handleCloseDialog} fullWidth maxWidth="sm">
         <DialogTitle>Add New Category</DialogTitle>
