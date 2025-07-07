@@ -1,6 +1,7 @@
 import { Box, Button, Typography, Container } from '@mui/material';
 import Lottie from 'lottie-react';
 import NotFoundAnimation from '../assets/animations/NotFound.json';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
   return (
@@ -45,9 +46,10 @@ const NotFound = () => {
       </Typography>
 
       <Button
+        component={Link}
         variant="contained"
         color="primary"
-        href="/"
+        to="/"
         sx={{ px: 3, py: 1.5, fontSize: '1rem' }}
       >
         Go Home

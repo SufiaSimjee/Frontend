@@ -8,6 +8,7 @@ import { darkTheme, customTheme } from "./themes.js";
 import App from "./App.jsx";
 import NotFoundScreen from "./screens/NotFoundScreen.jsx";
 import Dashboard from "./screens/Dashboard.jsx";
+import ProfileScreen from "./screens/ProfileScreen.jsx";
 import ViewCategory from "./screens/ViewCategory.jsx";
 import ViewBrand from "./screens/ViewBrand.jsx";
 
@@ -31,6 +32,7 @@ export const Main = () => {
           <Route index element={<Dashboard />} />
           <Route path="category" element={<ViewCategory />} />
           <Route path="brand" element={<ViewBrand />} />
+          <Route path="profile" element={<ProfileScreen />} />
           <Route path="*" element={<NotFoundScreen />} />
         </Route>
       )
