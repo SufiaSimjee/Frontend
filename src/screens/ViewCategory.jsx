@@ -25,7 +25,8 @@ const ViewCategory = () => {
     setDescription("");
   };
 
-  const handleSave = () => {
+  const handleSave = (e) => {
+    e.preventDefault();
     console.log({ id, name, description });
     handleCloseDialog();
   };
@@ -41,7 +42,7 @@ const ViewCategory = () => {
       <Dialog open={open} onClose={handleCloseDialog} fullWidth maxWidth="sm">
         <DialogTitle>Add New Category</DialogTitle>
         <DialogContent dividers>
-          <Box component="form" noValidate autoComplete="off" sx={{ mt: 1 }}>
+          <Box component="form" noValidate autoComplete="off" sx={{ mt: 1 }} onClick={handleSave}>
             <TextField
               label="Category ID"
               value={id}
@@ -69,7 +70,7 @@ const ViewCategory = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog}>Cancel</Button>
-          <Button variant="contained" onClick={handleSave} color="primary">
+          <Button variant="contained" color="primary">
             Save
           </Button>
         </DialogActions>

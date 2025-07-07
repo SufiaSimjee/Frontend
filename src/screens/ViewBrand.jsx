@@ -1,6 +1,5 @@
 import { useState } from "react";
-import {
-        Typography,Dialog,DialogTitle,
+import {Typography,Dialog,DialogTitle,
         DialogContent,DialogActions,Button,
          TextField,Box
 } from "@mui/material";
@@ -25,7 +24,8 @@ const ViewBrand = () => {
     setDescription("");
   };
 
-  const handleSave = () => {
+  const handleSave = (e) => {
+    e.preventDefault();
     console.log({ id, name, description });
     handleCloseDialog();
   };
@@ -41,7 +41,8 @@ const ViewBrand = () => {
       <Dialog open={open} onClose={handleCloseDialog} fullWidth maxWidth="sm">
         <DialogTitle>Add New Brand</DialogTitle>
         <DialogContent dividers>
-          <Box component="form" noValidate autoComplete="off" sx={{ mt: 1 }}>
+          <Box component="form" noValidate autoComplete="off" sx={{ mt: 1 }} 
+          onClick={handleSave}>
             <TextField
               label="Brand ID"
               value={id}
@@ -69,7 +70,7 @@ const ViewBrand = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog}>Cancel</Button>
-          <Button variant="contained" onClick={handleSave} color="primary">
+          <Button variant="contained" color="primary">
             Save
           </Button>
         </DialogActions>

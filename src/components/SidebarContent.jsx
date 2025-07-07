@@ -1,14 +1,12 @@
 import {
-  Box,
-  Divider,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-  Collapse,
+  Box,Divider,
+  List,ListItemButton,
+  ListItemIcon,ListItemText,
+  Toolbar,Collapse,
 } from "@mui/material";
-import {SpaceDashboard,Apps,Storefront,} from "@mui/icons-material"; 
+import {SpaceDashboard,Apps,Storefront,Inventory2  ,
+        PeopleAlt   
+ } from "@mui/icons-material"; 
 import { Link, useLocation } from "react-router-dom";
 
 export default function SidebarContent() {
@@ -53,6 +51,31 @@ export default function SidebarContent() {
           </ListItemIcon>
           <ListItemText primary="Brand" />
         </ListItemButton>
+
+        {/* Product */}
+        <ListItemButton
+          component={Link}
+          to="/product"
+          selected={isActive("/product")}
+        >
+          <ListItemIcon>
+            <Inventory2  />
+          </ListItemIcon>
+          <ListItemText primary="Product" />
+        </ListItemButton>
+
+        {/* Users */}
+        <ListItemButton
+          component={Link}
+          to="/users"
+          selected={isActive("/users")}
+        >
+          <ListItemIcon>
+            <PeopleAlt    />
+          </ListItemIcon>
+          <ListItemText primary="Users" />
+        </ListItemButton>
+        
 
       </List>
     </Box>
