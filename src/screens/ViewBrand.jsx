@@ -42,7 +42,7 @@ const ViewBrand = () => {
         <DialogTitle>Add New Brand</DialogTitle>
         <DialogContent dividers>
           <Box component="form" noValidate autoComplete="off" sx={{ mt: 1 }} 
-          onClick={handleSave}>
+          onSubmit={handleSave}>
             <TextField
               label="Brand ID"
               value={id}

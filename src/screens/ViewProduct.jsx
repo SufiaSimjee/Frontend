@@ -1,15 +1,12 @@
 import { useState } from "react";
-import {
-        Typography,Dialog,DialogTitle,
+import {Typography,Dialog,DialogTitle,
         DialogContent,DialogActions,Button,
          TextField,Box
 } from "@mui/material";
 import AddFab from "../components/AddFab";
 
-const ViewCategory = () => {
+const ViewProduct = () => {
   const [id, setId] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
   const [open, setOpen] = useState(false);
 
   const handleOpenDialog = () => setOpen(true);
@@ -21,52 +18,35 @@ const ViewCategory = () => {
 
   const resetForm = () => {
     setId("");
-    setName("");
-    setDescription("");
   };
 
   const handleSave = (e) => {
     e.preventDefault();
-    console.log({ id, name, description });
+    console.log({ id });
     handleCloseDialog();
   };
 
   return (
     <>
       <Typography variant="h4" component="h1" gutterBottom>
-        Category
+        Products
       </Typography>
 
       <AddFab onClick={handleOpenDialog} />
 
       <Dialog open={open} onClose={handleCloseDialog} fullWidth maxWidth="sm">
-        <DialogTitle>Add New Category</DialogTitle>
+        <DialogTitle>Add New Product</DialogTitle>
         <DialogContent dividers>
-          <Box component="form" noValidate autoComplete="off" sx={{ mt: 1 }} onSubmit={handleSave}>
+          <Box component="form" noValidate autoComplete="off" sx={{ mt: 1 }} 
+          onSubmit={handleSave}>
             <TextField
-              label="Category ID"
+              label="Product ID"
               value={id}
               onChange={(e) => setId(e.target.value)}
               fullWidth
               autoFocus
             />
-            <TextField
-              label="Category Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              fullWidth
-              margin="normal"
-            />
-            <TextField
-              label="Category Description"
-              multiline
-              rows={3}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              fullWidth
-              margin="normal"
-            />
-          </Box>
+            </Box>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog}>Cancel</Button>
@@ -79,4 +59,4 @@ const ViewCategory = () => {
   );
 };
 
-export default ViewCategory;
+export default ViewProduct;

@@ -11,6 +11,8 @@ import Dashboard from "./screens/Dashboard.jsx";
 import ProfileScreen from "./screens/ProfileScreen.jsx";
 import ViewCategory from "./screens/ViewCategory.jsx";
 import ViewBrand from "./screens/ViewBrand.jsx";
+import ViewProduct from "./screens/ViewProduct.jsx"; 
+import ViewUser from "./screens/ViewUser.jsx";
 
 export const Main = () => {
   const [mode, setMode] = useState(() => localStorage.getItem("themeMode") || "custom");
@@ -32,7 +34,9 @@ export const Main = () => {
           <Route index element={<Dashboard />} />
           <Route path="category" element={<ViewCategory />} />
           <Route path="brand" element={<ViewBrand />} />
+          <Route path="product" element={<ViewProduct />} />
           <Route path="profile" element={<ProfileScreen />} />
+          <Route path="users" element={<ViewUser />} />
           <Route path="*" element={<NotFoundScreen />} />
         </Route>
       )
