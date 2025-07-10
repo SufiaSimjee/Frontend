@@ -70,15 +70,17 @@ export default function AppBarTop({
           Zaw Min Mobile
         </Typography>
 
-        {/* Theme mode toggle */}
-        <IconButton color="inherit" onClick={toggleColorMode} aria-label="toggle theme">
-          {themeMode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
-        </IconButton>
+        {/* Theme mode toggle with tooltip */}
+        <Tooltip title={themeMode === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}>
+          <IconButton color="inherit" onClick={toggleColorMode} aria-label="toggle theme">
+            {themeMode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
+        </Tooltip>
 
         {/* Profile menu */}
         <Box sx={{ ml: 2 }}>
           <Tooltip title="Account">
-            <IconButton onClick={handleMenuOpen} color="inherit" size="large">
+            <IconButton onClick={handleMenuOpen} color="inherit" size="large" aria-label="account menu">
               <AccountCircleIcon />
             </IconButton>
           </Tooltip>
