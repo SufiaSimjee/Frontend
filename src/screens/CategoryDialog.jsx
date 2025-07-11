@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import CustomDialogTitle from "../components/CustomDialogTitle";
 
 const CategoryDialog = ({ open, onClose, onSave }) => {
   const [id, setId] = useState("");
@@ -46,7 +47,7 @@ const CategoryDialog = ({ open, onClose, onSave }) => {
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle>Add New Category</DialogTitle>
+        <CustomDialogTitle title="Add New Category" onClose={onClose} />
       <DialogContent dividers>
         <Box
           component="form"
@@ -89,6 +90,7 @@ const CategoryDialog = ({ open, onClose, onSave }) => {
             variant="outlined"
             component="label"
             fullWidth
+            size="large"
             sx={{ mt: 2 }}
           >
             Upload Category Image
@@ -112,15 +114,7 @@ const CategoryDialog = ({ open, onClose, onSave }) => {
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button
-          onClick={() => {
-            resetForm();
-            onClose();
-          }}
-        >
-          Cancel
-        </Button>
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
+        <Button variant="contained" color="primary" onClick={handleSubmit} size="large" fullWidth sx={{m : 1}}>
           Save
         </Button>
       </DialogActions>

@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import CustomDialogTitle from "../components/CustomDialogTitle";
 
 const BrandDialog = ({ open, onClose, onSave }) => {
   const [id, setId] = useState("");
@@ -46,7 +47,7 @@ const BrandDialog = ({ open, onClose, onSave }) => {
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle>Add New Brand</DialogTitle>
+      <CustomDialogTitle title="Add New Brand" onClose={onClose} />
       <DialogContent dividers>
         <Box
           component="form"
@@ -86,7 +87,7 @@ const BrandDialog = ({ open, onClose, onSave }) => {
             </Box>
           )}
 
-          <Button variant="outlined" component="label" fullWidth sx={{ mt: 2 }}>
+          <Button variant="outlined" component="label" fullWidth sx={{ mt: 2 }} size="large">
             Upload Brand Image
             <input
               type="file"
@@ -108,15 +109,11 @@ const BrandDialog = ({ open, onClose, onSave }) => {
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button
-          onClick={() => {
-            resetForm();
-            onClose();
-          }}
-        >
-          Cancel
-        </Button>
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
+        <Button variant="contained" 
+        size="large"
+        fullWidth
+        sx={{ m: 1 }}
+        color="primary" onClick={handleSubmit}>
           Save
         </Button>
       </DialogActions>
