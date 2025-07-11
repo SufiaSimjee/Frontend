@@ -52,7 +52,7 @@ const ProfileScreen = () => {
           p: 4,
         }}
       >
-        <Typography variant="h4" align="center" gutterBottom>
+        <Typography variant="h5" align="center" gutterBottom>
           Profile
         </Typography>
 

@@ -13,7 +13,6 @@ import ViewCategory from "./screens/ViewCategory.jsx";
 import ViewBrand from "./screens/ViewBrand.jsx";
 import ViewProduct from "./screens/ViewProduct.jsx"; 
 import ViewUser from "./screens/ViewUser.jsx";
-
 import LoginScreen from "./screens/LoginScreen.jsx";
 
 export const Main = () => {
