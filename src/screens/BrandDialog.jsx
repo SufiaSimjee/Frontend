@@ -45,9 +45,14 @@ const BrandDialog = ({ open, onClose, onSave }) => {
     onClose();
   };
 
+  const handleClose = () => {
+    resetForm();
+    onClose();
+  };
+
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <CustomDialogTitle title="Add New Brand" onClose={onClose} />
+      <CustomDialogTitle title="Add New Brand" onClose={handleClose} />
       <DialogContent dividers>
         <Box
           component="form"
@@ -87,7 +92,13 @@ const BrandDialog = ({ open, onClose, onSave }) => {
             </Box>
           )}
 
-          <Button variant="outlined" component="label" fullWidth sx={{ mt: 2 }} size="large">
+          <Button
+            variant="outlined"
+            component="label"
+            fullWidth
+            sx={{ mt: 1 }}
+            size="large"
+          >
             Upload Brand Image
             <input
               type="file"
@@ -109,11 +120,14 @@ const BrandDialog = ({ open, onClose, onSave }) => {
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button variant="contained" 
-        size="large"
-        fullWidth
-        sx={{ m: 1 }}
-        color="primary" onClick={handleSubmit}>
+        <Button
+          variant="contained"
+          size="large"
+          fullWidth
+          sx={{ m: 1 }}
+          color="primary"
+          onClick={handleSubmit}
+        >
           Save
         </Button>
       </DialogActions>

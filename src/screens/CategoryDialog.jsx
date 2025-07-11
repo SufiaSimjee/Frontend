@@ -31,23 +31,28 @@ const CategoryDialog = ({ open, onClose, onSave }) => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImage(reader.result); 
-        setImagePreview(reader.result); 
+        setImage(reader.result);
+        setImagePreview(reader.result);
       };
-      reader.readAsDataURL(file); 
+      reader.readAsDataURL(file);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave({ id, name, description, image }); 
+    onSave({ id, name, description, image });
+    resetForm();
+    onClose();
+  };
+
+  const handleClose = () => {
     resetForm();
     onClose();
   };
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-        <CustomDialogTitle title="Add New Category" onClose={onClose} />
+      <CustomDialogTitle title="Add New Category" onClose={handleClose} />
       <DialogContent dividers>
         <Box
           component="form"
@@ -91,7 +96,7 @@ const CategoryDialog = ({ open, onClose, onSave }) => {
             component="label"
             fullWidth
             size="large"
-            sx={{ mt: 2 }}
+            sx={{ mt: 1 }}
           >
             Upload Category Image
             <input
@@ -114,7 +119,14 @@ const CategoryDialog = ({ open, onClose, onSave }) => {
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button variant="contained" color="primary" onClick={handleSubmit} size="large" fullWidth sx={{m : 1}}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit}
+          size="large"
+          fullWidth
+          sx={{ m: 1 }}
+        >
           Save
         </Button>
       </DialogActions>

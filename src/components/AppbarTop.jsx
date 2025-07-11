@@ -66,7 +66,7 @@ export default function AppBarTop({
           <MenuIcon />
         </IconButton>
 
-        <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
+        <Typography variant="h5" noWrap sx={{ flexGrow: 1 }}>
           Zaw Min Mobile
         </Typography>
 
