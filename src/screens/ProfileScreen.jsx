@@ -14,7 +14,7 @@ const ProfileScreen = () => {
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === "dark";
 
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -57,10 +57,10 @@ const ProfileScreen = () => {
         </Typography>
 
         <TextField
-          label="Username"
+          label="Name"
           fullWidth
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           margin="normal"
           variant="outlined"
         />

@@ -1,6 +1,14 @@
 import { useState } from "react";
-import {Box,Button,TextField,Typography,
-  Paper,Stepper,Step,StepLabel,} from "@mui/material";
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  Paper,
+  Stepper,
+  Step,
+  StepLabel,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 
 const steps = ["Enter Email", "Verification", "New Password"];
@@ -104,11 +112,7 @@ const ForgotPasswordScreen = () => {
           boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
         }}
       >
-        <Typography
-          variant="h5"
-          align="center"
-          sx={{ fontWeight: "bold", mb: 2, color: "text.primary" }}
-        >
+        <Typography variant="h5" align="center" gutterBottom sx={{ mb: 3 }}>
           Forgot Password
         </Typography>
 
@@ -133,11 +137,16 @@ const ForgotPasswordScreen = () => {
 
           <Box sx={{ mt: 3, width: "100%" }}>
             {activeStep < steps.length - 1 ? (
-              <Button variant="contained" onClick={handleNext} fullWidth>
+              <Button
+                variant="contained"
+                onClick={handleNext}
+                fullWidth
+                size="large"
+              >
                 Next
               </Button>
             ) : (
-              <Button variant="contained" type="submit" fullWidth>
+              <Button variant="contained" type="submit" fullWidth size="large">
                 Reset Password
               </Button>
             )}

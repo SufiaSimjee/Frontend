@@ -50,7 +50,6 @@ const LoginScreen = () => {
           variant="h5"
           gutterBottom
           align="center"
-          sx={{ fontWeight: 600 }}
         >
           Login
         </Typography>
