@@ -14,6 +14,7 @@ import ViewBrand from "./screens/ViewBrand.jsx";
 import ViewProduct from "./screens/ViewProduct.jsx"; 
 import ViewUser from "./screens/ViewUser.jsx";
 import LoginScreen from "./screens/LoginScreen.jsx";
+import ForgotPasswordScreen from "./screens/ForgotPasswordScreen.jsx";
 
 export const Main = () => {
   const [mode, setMode] = useState(() => localStorage.getItem("themeMode") || "custom");
@@ -33,6 +34,7 @@ export const Main = () => {
       createRoutesFromElements(
         <>
         <Route path="/login" element={<LoginScreen />} />
+        <Route path="/forgotPassword" element={<ForgotPasswordScreen />} />
         <Route path="/" element={<App toggleColorMode={toggleTheme} themeMode={mode} />}>
           <Route index element={<Dashboard />} />
           <Route path="category" element={<ViewCategory />} />

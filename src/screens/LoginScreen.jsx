@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -7,13 +7,13 @@ import {
   Paper,
   InputAdornment,
   IconButton,
-} from '@mui/material';
-import { Link } from 'react-router-dom';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+} from "@mui/material";
+import { Link } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePassword = () => {
@@ -27,30 +27,40 @@ const LoginScreen = () => {
   return (
     <Box
       sx={{
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#f9fafb',
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#f9fafb",
       }}
     >
       <Paper
         elevation={5}
         sx={{
           padding: 5,
-          width: '90%',
+          width: "90%",
           maxWidth: 380,
           borderRadius: 3,
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(6px)',
-          boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
+          backgroundColor: "rgba(255, 255, 255, 0.95)",
+          backdropFilter: "blur(6px)",
+          boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
         }}
       >
-        <Typography variant="h5" gutterBottom align="center" sx={{ fontWeight: 600 }}>
+        <Typography
+          variant="h5"
+          gutterBottom
+          align="center"
+          sx={{ fontWeight: 600 }}
+        >
           Login
         </Typography>
 
-        <Box component="form" noValidate autoComplete="off" onSubmit={handleSubmit}>
+        <Box
+          component="form"
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
           <TextField
             fullWidth
             label="Email"
@@ -65,7 +75,7 @@ const LoginScreen = () => {
           <TextField
             fullWidth
             label="Password"
-            type={showPassword ? 'text' : 'password'}
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             margin="normal"
@@ -88,14 +98,25 @@ const LoginScreen = () => {
 
           <Box display="flex" justifyContent="flex-end" mt={1}>
             <Link
-              to="/forgot-password"
-              style={{ textDecoration: 'none', color: '#388e3c', fontWeight: 500 }}
+              to="/forgotPassword"
+              style={{
+                textDecoration: "none",
+                color: "#388e3c",
+                fontWeight: 500,
+              }}
             >
               Forgot password?
             </Link>
           </Box>
 
-          <Button fullWidth variant="contained" color="primary" sx={{ mt: 2 }} type="submit">
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            sx={{ mt: 2 }}
+            size="large"
+            type="submit"
+          >
             Sign In
           </Button>
         </Box>
