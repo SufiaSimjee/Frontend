@@ -1,13 +1,85 @@
-import React, { useState } from "react";
-import { Box, Button, TextField, Typography, Paper } from "@mui/material";
+import { useState } from "react";
+import {Box,Button,TextField,Typography,
+  Paper,Stepper,Step,StepLabel,} from "@mui/material";
 import { Link } from "react-router-dom";
 
+const steps = ["Enter Email", "Verification", "New Password"];
+
+const StepContent = ({
+  step,
+  email,
+  setEmail,
+  resetCode,
+  setResetCode,
+  newPassword,
+  setNewPassword,
+}) => {
+  switch (step) {
+    case 0:
+      return (
+        <TextField
+          fullWidth
+          label="Email"
+          type="email"
+          variant="outlined"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      );
+    case 1:
+      return (
+        <TextField
+          fullWidth
+          label="Reset Code"
+          variant="outlined"
+          value={resetCode}
+          onChange={(e) => setResetCode(e.target.value)}
+          required
+        />
+      );
+    case 2:
+      return (
+        <TextField
+          fullWidth
+          label="New Password"
+          type="password"
+          variant="outlined"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+          required
+        />
+      );
+    default:
+      return null;
+  }
+};
+
 const ForgotPasswordScreen = () => {
+  const [activeStep, setActiveStep] = useState(0);
   const [email, setEmail] = useState("");
+  const [resetCode, setResetCode] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+
+  const handleNext = () => {
+    if (activeStep === 0 && !email) {
+      alert("Please enter your email");
+      return;
+    }
+    if (activeStep === 1 && !resetCode) {
+      alert("Please enter the reset code");
+      return;
+    }
+    if (activeStep === 2 && !newPassword) {
+      alert("Please enter a new password");
+      return;
+    }
+    setActiveStep((prev) => prev + 1);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted!");
+    alert("Password reset successfully!");
   };
 
   return (
@@ -23,9 +95,9 @@ const ForgotPasswordScreen = () => {
       <Paper
         elevation={5}
         sx={{
-          padding: 5,
+          padding: 6,
           width: "90%",
-          maxWidth: 380,
+          maxWidth: 550,
           borderRadius: 3,
           backgroundColor: "rgba(255, 255, 255, 0.95)",
           backdropFilter: "blur(6px)",
@@ -35,60 +107,54 @@ const ForgotPasswordScreen = () => {
         <Typography
           variant="h5"
           align="center"
-          sx={{ fontWeight: "bold", color: "text.primary", mb: 1 }}
+          sx={{ fontWeight: "bold", mb: 2, color: "text.primary" }}
         >
           Forgot Password
         </Typography>
 
-        <Typography
-          variant="body2"
-          align="center"
-          sx={{ mb: 1, pt: 1, color: "text.secondary" }}
-        >
-          Enter your email address and we’ll send you a link to reset your
-          password.
-        </Typography>
+        <Stepper activeStep={activeStep} alternativeLabel sx={{ mb: 4 }}>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
 
-        <Box
-          component="form"
-          noValidate
-          autoComplete="off"
-          onSubmit={handleSubmit}
-        >
-          <TextField
-            fullWidth
-            label="Email"
-            type="email"
-            variant="outlined"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            margin="normal"
+        <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
+          <StepContent
+            step={activeStep}
+            email={email}
+            setEmail={setEmail}
+            resetCode={resetCode}
+            setResetCode={setResetCode}
+            newPassword={newPassword}
+            setNewPassword={setNewPassword}
           />
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            size="large"
-            sx={{ mt: 2 }}
-          >
-            Send Reset Link
-          </Button>
-
-          <Box mt={2} textAlign="center">
-            <Link
-              to="/login"
-              style={{
-                textDecoration: "none",
-                color: "#388e3c",
-                fontWeight: 500,
-              }}
-            >
-              Back to Login
-            </Link>
+          <Box sx={{ mt: 3, width: "100%" }}>
+            {activeStep < steps.length - 1 ? (
+              <Button variant="contained" onClick={handleNext} fullWidth>
+                Next
+              </Button>
+            ) : (
+              <Button variant="contained" type="submit" fullWidth>
+                Reset Password
+              </Button>
+            )}
           </Box>
+        </Box>
+
+        <Box mt={2} textAlign="center">
+          <Link
+            to="/login"
+            style={{
+              textDecoration: "none",
+              color: "#388e3c",
+              fontWeight: 500,
+            }}
+          >
+            Back to Login
+          </Link>
         </Box>
       </Paper>
     </Box>
