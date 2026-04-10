@@ -1,8 +1,8 @@
 import {useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Box, CssBaseline, Toolbar } from "@mui/material";
-import AppBarTop from "./components/Appbartop";
-import Sidebar from "./components/Sidebar";
+import AppBarTop from "./components/Appbartop.jsx";
+import Sidebar from "./components/Sidebar.jsx";
 
 const drawerWidth = 240;
 
